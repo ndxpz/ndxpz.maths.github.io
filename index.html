@@ -1,0 +1,1221 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>数学知识库</title>
+<link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+
+<header>
+  <h1>📘 数学知识库</h1>
+  <input id="search" type="text" placeholder="搜索知识点 / 公式…（如：勾股定理、导数、正态分布）">
+<button class="theme-toggle" id="themeToggle" type="button">深色模式</button>
+</header>
+
+<div class="container">
+  <nav id="nav"></nav>
+  <main id="content">
+    <div class="welcome">
+      <div class="welcome-label">MATH LEARNING SPACE</div>
+      <h2>欢迎来到数学学习空间</h2>
+      <p>从左侧课程目录选择章节，循序学习数学知识与常用公式。</p>
+      <p>也可以使用顶部搜索框，快速定位定理、概念和公式。</p>
+      <div class="welcome-stats">
+        <span class="welcome-stat">📚 两套学习资料</span>
+        <span class="welcome-stat">🧭 三大学科模块</span>
+        <span class="welcome-stat">🔎 章节与公式可搜索</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   数据区：把两个 txt 的内容分别填到 DATA 对象里
+   用反引号 ` 包裹，注意内容里如果有反引号需要转义
+   ============================================================ */
+const DATA = {
+  "数学知识点": `数学知识点总览
+按：数与代数、图形与几何、概率与统计 三大类整理
+
+============================================================
+一、数与代数
+============================================================
+
+1. 数系与运算
+自然数：0,1,2,3…；加、乘封闭。
+整数：自然数及其相反数；Z；加、减、乘封闭。
+有理数：可写成 p/q，q≠0；有限小数或循环小数。
+实数：有理数 + 无理数；与数轴一一对应；完备有序域。
+复数：a+bi，i²=-1；有共轭、模、三角形式。
+数轴：实数与点对应；可比较大小。
+相反数：a+(-a)=0。
+倒数：a·(1/a)=1，a≠0。
+绝对值：|a|=a(a≥0)，|a|=-a(a<0)；|a+b|≤|a|+|b|。
+科学记数法：a×10ⁿ，1≤|a|<10。
+有效数字与近似数：四舍五入、误差、相对误差。
+平方根：x²=a，非负根为 √a。
+立方根：x³=a，实数范围内唯一。
+n次方根：xⁿ=a；奇次根实数唯一，偶次根非负。
+分数指数幂：a^(m/n)=ⁿ√(aᵐ)，a>0。
+指数：a^(m+n)=aᵐaⁿ，(aᵐ)ⁿ=a^(mn)，a⁰=1。
+对数：logₐb=c ⇔ aᶜ=b；logₐ(MN)=logₐM+logₐN。
+换底公式：logₐb=ln b/ln a。
+进制：二进制、八进制、十六进制；按位权展开。
+模运算：a≡b mod n；同余类可加减乘，除法需逆元。
+
+2. 代数式与变形
+整式：单项式、多项式；加减乘、幂运算。
+分式：A/B，B≠0；约分、通分、四则运算。
+根式：√a；最简二次根式、分母有理化。
+因式分解：提公因式、公式法、十字相乘、分组分解、求根法。
+配方：ax²+bx+c=a(x+b/2a)²+…；用于求顶点、解方程。
+换元：整体替换，简化结构。
+待定系数法：设未知系数，列方程求解。
+恒等变形：展开、因式分解、通分、约分，值不变。
+对称式：交换变量不变；轮换式：轮换变量不变。
+多项式：次数、系数、根；余数定理、因式定理、韦达定理。
+有理分式：部分分式分解，用于积分。
+二项式展开：(a+b)ⁿ=Σ C(n,k)a^(n-k)bᵏ。
+
+3. 方程与不等式
+一元一次方程：ax+b=0，x=-b/a。
+二元一次方程组：代入法、加减法；解为两直线交点。
+一元二次方程：ax²+bx+c=0；Δ=b²-4ac；x=(-b±√Δ)/2a。
+分式方程：去分母求解，必须验根。
+根式方程：平方去根，必须验根。
+高次方程：因式分解、试根、降次。
+不等式：同向可加；乘正数不变向，乘负数变向。
+不等式组：解集取交集。
+绝对值不等式：|x|<a ⇔ -a<x<a；|x|>a ⇔ x<-a 或 x>a。
+线性规划：线性约束下求目标函数最值，通常看可行域顶点。
+韦达定理：x₁+x₂=-b/a，x₁x₂=c/a。
+方程根分布：结合判别式、对称轴、端点函数值。
+函数零点：f(x)=0 的解；零点存在定理：连续且异号则有零点。
+
+4. 函数
+函数概念：映射关系；定义域、值域、对应法则。
+定义域：使表达式有意义的自变量集合。
+值域：所有函数值组成的集合。
+单调性：增函数、减函数；导数 ≥0 增，≤0 减。
+奇偶性：偶函数 f(-x)=f(x)；奇函数 f(-x)=-f(x)。
+周期性：f(x+T)=f(x)。
+有界性：存在 M，使 |f(x)|≤M。
+反函数：y=f(x) ⇔ x=f⁻¹(y)；图像关于 y=x 对称。
+复合函数：f(g(x))。
+图像变换：平移、伸缩、对称、翻折。
+一次函数：y=kx+b；斜率 k，截距 b。
+二次函数：y=ax²+bx+c；顶点 (-b/2a,(4ac-b²)/4a)。
+反比例函数：y=k/x；双曲线。
+幂函数：y=x^α。
+指数函数：y=aˣ，a>0，a≠1；过 (0,1)。
+对数函数：y=logₐx；与指数函数互为反函数。
+三角函数：sin、cos、tan、cot、sec、csc；单位圆定义，周期。
+弧度制：π rad=180°。
+诱导公式：奇变偶不变，符号看象限。
+和差倍半公式：sin(α±β)、cos2α、tan2α 等。
+积化和差、和差化积：三角恒等变换。
+解三角形：正弦定理 a/sinA=b/sinB=c/sinC=2R；余弦定理 a²=b²+c²-2bc cosA。
+函数模型：线性、指数、对数、三角模型。
+函数方程：如 f(x+y)=f(x)+f(y)。
+零点：f(x)=0；用于方程近似解。
+
+5. 数列
+等差数列：aₙ=a₁+(n-1)d；Sₙ=n(a₁+aₙ)/2。
+等比数列：aₙ=a₁q^(n-1)；Sₙ=a₁(1-qⁿ)/(1-q)，q≠1。
+递推数列：aₙ₊₁=f(aₙ)；求通项。
+通项公式：aₙ 与 n 的关系。
+求和公式：裂项、错位相减、倒序相加、分组求和。
+数学归纳法：验证 n=1；假设 n=k；证明 n=k+1。
+数列极限：n→∞ 时趋近 L；ε-N 定义。
+
+6. 向量与复数
+平面向量：有大小、方向；坐标表示。
+空间向量：三维坐标。
+线性运算：加减、数乘；三角形、平行四边形法则。
+数量积：a·b=|a||b|cosθ；坐标 x₁x₂+y₁y₂。
+向量积：a×b；方向右手法则，模为平行四边形面积。
+混合积：a·(b×c)；几何意义为平行六面体体积。
+复数概念：a+bi。
+复数运算：加减乘除、共轭、模。
+复数几何意义：复平面上的点或向量。
+复数三角形式：r(cosθ+i sinθ)。
+欧拉公式：e^(iθ)=cosθ+i sinθ。
+
+7. 排列组合与二项式
+加法原理：分类相加。
+乘法原理：分步相乘。
+排列：A(n,k)=n!/(n-k)!。
+组合：C(n,k)=n!/[k!(n-k)!]。
+二项式定理：(a+b)ⁿ=Σ C(n,k)a^(n-k)bᵏ。
+容斥原理：|A∪B|=|A|+|B|-|A∩B|。
+
+8. 极限与微积分
+数列极限：ε-N 定义。
+函数极限：ε-δ 定义；左右极限。
+连续：lim(x→a)f(x)=f(a)。
+导数：f'(x)=lim [f(x+h)-f(x)]/h；切线斜率。
+微分：dy=f'(x)dx。
+中值定理：罗尔、拉格朗日、柯西。
+洛必达法则：0/0 或 ∞/∞ 型求导求极限。
+泰勒公式：f(x)=Σ f^(n)(a)(x-a)ⁿ/n!+余项。
+不定积分：∫f(x)dx=F(x)+C。
+定积分：∫ₐᵇf(x)dx；牛顿-莱布尼茨公式。
+反常积分：无穷限或无界函数积分。
+多元偏导：∂f/∂x。
+全微分：dz=∂z/∂x dx+∂z/∂y dy。
+重积分：二重、三重积分；求面积、体积、质量。
+曲线积分：第一类、第二类。
+曲面积分：第一类、第二类。
+无穷级数：Σaₙ；收敛判别。
+幂级数：Σaₙ(x-a)ⁿ；收敛半径。
+傅里叶级数：周期函数分解为正弦、余弦。
+常微分方程：含导数方程；可分离变量、一阶线性、二阶常系数。
+偏微分方程：热方程、波动方程、拉普拉斯方程。
+
+9. 线性代数
+行列式：方阵数值；展开、性质。
+矩阵：数表；加减乘、转置、逆。
+向量组：线性相关、线性无关；秩。
+线性方程组：高斯消元；解的结构。
+特征值、特征向量：Av=λv。
+相似对角化：P⁻¹AP=Λ。
+二次型：xᵀAx；正定、负定。
+线性空间：向量空间；基、维数。
+线性变换：保持线性运算的映射。
+若尔当标准型：不可对角化矩阵的标准形。
+
+10. 抽象代数与数论
+群：集合+运算；封闭、结合、单位元、逆元。
+环：加法群+乘法；分配律。
+域：交换环，非零元可逆。
+模：环上类似向量空间的结构。
+伽罗瓦理论：域扩张与群对应；方程根式解。
+整除：a|b。
+同余：a≡b mod n。
+质数：仅 1 和自身两个正因数。
+丢番图方程：求整数解。
+连分数：a₀+1/(a₁+1/(a₂+…))。
+二次剩余：x²≡a mod p。
+解析数论：用分析研究数论；黎曼 ζ 函数。
+
+11. 集合、逻辑与证明
+集合：元素、子集、交、并、补。
+命题：真假陈述。
+量词：∀ 全称，∃ 存在。
+充分必要条件：p⇒q。
+直接证明：由条件推结论。
+反证法：假设否定，导出矛盾。
+数学归纳法：见数列。
+构造法：构造对象证明存在。
+
+12. 其他
+组合数学：计数、存在、构造。
+图论：点、边；路径、连通、欧拉、哈密顿。
+离散数学：逻辑、集合、图、组合。
+数值分析：近似计算、误差、迭代。
+运筹学：优化、排队、决策。
+优化理论：线性、非线性规划；KKT 条件。
+数学建模：实际问题数学化。
+复变函数：解析函数、积分、留数。
+实变函数：测度、勒贝格积分。
+泛函分析：函数空间、算子、希尔伯特空间。
+
+============================================================
+二、图形与几何
+============================================================
+
+1. 平面几何基础
+点、线、射线、线段、角：基本图形。
+相交线、平行线、垂直：同位角、内错角、同旁内角。
+三角形全等：SSS、SAS、ASA、AAS、HL。
+相似：AA、SAS、SSS；对应边成比例。
+等腰三角形：等边对等角；三线合一。
+等边三角形：三边相等，三角 60°。
+直角三角形：勾股定理；斜边中线等于斜边一半。
+勾股定理：a²+b²=c²；逆定理判定直角。
+中位线：平行第三边且等于一半。
+角平分线：到两边距离相等。
+中线：重心分中线为 2:1。
+高线：垂心。
+三角形四心：重心、垂心、内心、外心。
+四边形：内角和 360°。
+平行四边形：对边平行且相等；对角线互相平分。
+矩形：四角直角；对角线相等。
+菱形：四边相等；对角线垂直。
+正方形：矩形+菱形。
+梯形：一组对边平行；中位线=(上底+下底)/2。
+多边形：内角和 (n-2)180°；外角和 360°。
+正多边形：各边、各角相等；中心角 360°/n。
+圆：圆心、半径、弦、弧。
+圆心角：等于所对弧的度数。
+圆周角：等于同弧圆心角的一半。
+切线：垂直于过切点的半径。
+割线：与圆交于两点。
+相交弦：PA·PB=PC·PD。
+切割线：PT²=PA·PB。
+圆幂定理：统一相交弦、割线、切割线。
+内接四边形：对角互补。
+外切四边形：对边和相等。
+弧长：l=rθ。
+扇形面积：S=½r²θ。
+三角形面积：½底×高；海伦公式。
+周长：各边长度和。
+比例线段：平行线分线段成比例。
+黄金分割：φ=(1+√5)/2。
+
+2. 图形变换与作图
+轴对称：翻折重合；对称轴。
+平移：方向、距离。
+旋转：旋转中心、旋转角。
+位似：相似；位似中心。
+相似：形状相同，边成比例。
+合同：全等。
+坐标变换：平移、旋转、缩放矩阵。
+尺规作图：圆规、直尺。
+轨迹：满足条件的点集。
+投影与视图：正投影。
+三视图：主视图、俯视图、左视图。
+直观图：斜二测画法。
+展开图：立体表面展开。
+
+3. 立体几何
+空间点、线、面：位置关系。
+平行：线线、线面、面面平行。
+垂直：线线、线面、面面垂直。
+异面直线：不共面；所成角。
+线面角：斜线与射影夹角。
+二面角：两个半平面夹角。
+距离：点线、点面、线线、线面、面面距离。
+棱柱：两底面平行全等；侧棱平行。
+棱锥：底面多边形；侧棱交于顶点。
+棱台：棱锥截得。
+圆柱：矩形旋转形成。
+圆锥：直角三角形旋转形成。
+圆台：圆锥截得。
+球：到定点距离等于半径。
+表面积：柱、锥、台、球公式。
+体积：柱 Sh；锥 Sh/3；球 4/3πR³。
+截面：平面与几何体交线。
+空间向量：三维向量。
+法向量：垂直平面。
+坐标法：建系求角、距离。
+
+4. 解析几何
+直线方程：点斜式、斜截式、一般式、截距式。
+圆方程：(x-a)²+(y-b)²=r²。
+椭圆：x²/a²+y²/b²=1；c²=a²-b²；e=c/a<1。
+双曲线：x²/a²-y²/b²=1；c²=a²+b²；e>1；渐近线 y=±bx/a。
+抛物线：y²=2px；焦点 (p/2,0)；准线 x=-p/2。
+参数方程：x=x(t)，y=y(t)。
+极坐标：x=ρcosθ，y=ρsinθ。
+圆锥曲线统一定义：到焦点与准线距离比为 e。
+离心率：e。
+准线：。
+渐近线：双曲线趋近直线。
+坐标法：用坐标研究几何。
+曲线与方程：方程对应曲线。
+二次曲线一般理论：Ax²+Bxy+Cy²+Dx+Ey+F=0。
+
+5. 向量几何
+平面向量：二维向量。
+空间向量：三维向量。
+数量积：点积。
+向量积：叉积。
+混合积：体积。
+证明平行垂直：共线、点积为 0。
+求角：cosθ=a·b/(|a||b|)。
+求距离：投影。
+
+6. 高等几何
+射影几何：射影平面、交比、对偶、圆锥曲线。
+非欧几何：罗巴切夫斯基几何、黎曼几何。
+微分几何：曲线曲率、挠率；曲面基本形式；高斯曲率；测地线。
+拓扑学：开闭集、连续映射、同胚、基本群、覆盖空间、流形。
+计算几何：几何算法。
+组合几何：组合与几何结合。
+凸几何：凸集、凸包。
+分形几何：自相似、分数维。
+辛几何：辛流形。
+微分流形：局部欧氏空间。
+
+============================================================
+三、概率与统计
+============================================================
+
+1. 概率论基础
+随机事件：可能发生的结果。
+样本空间：所有可能结果。
+古典概型：有限等可能；P=m/n。
+几何概型：长度、面积、体积比。
+条件概率：P(A|B)=P(AB)/P(B)。
+独立性：P(AB)=P(A)P(B)。
+互斥：不能同时发生。
+全概率公式：P(A)=ΣP(Bᵢ)P(A|Bᵢ)。
+贝叶斯公式：P(Bᵢ|A)=P(Bᵢ)P(A|Bᵢ)/P(A)。
+
+2. 随机变量与分布
+离散型随机变量：取值可数；分布列。
+连续型随机变量：概率密度。
+分布函数：F(x)=P(X≤x)。
+概率密度：f(x)≥0；∫f=1。
+分布列：P(X=xᵢ)=pᵢ。
+二项分布：B(n,p)；P=C(n,k)pᵏ(1-p)^(n-k)。
+泊松分布：P(X=k)=λᵏe^(-λ)/k!。
+超几何分布：不放回抽样。
+均匀分布：U(a,b)。
+指数分布：f=λe^(-λx)。
+正态分布：N(μ,σ²)；钟形。
+卡方分布：χ²。
+t分布：小样本。
+F分布：方差比。
+
+3. 数字特征
+期望：E(X)=Σxᵢpᵢ 或 ∫xf。
+方差：Var(X)=E[(X-EX)²]=E(X²)-(EX)²。
+标准差：√Var。
+协方差：Cov(X,Y)=E[(X-EX)(Y-EY)]。
+相关系数：ρ=Cov/(σ_Xσ_Y)。
+矩：原点矩、中心矩。
+母函数：概率母函数、矩母函数。
+
+4. 极限定理
+大数定律：样本均值依概率收敛于期望。
+中心极限定理：独立同分布和近似正态。
+
+5. 随机过程
+马尔可夫链：未来只依赖现在。
+泊松过程：事件到达计数。
+布朗运动：连续随机游走。
+鞅：条件期望不变。
+平稳过程：统计特性不随时间变。
+
+6. 数理统计
+总体与样本：研究全体与抽样。
+抽样分布：样本统计量分布。
+点估计：用样本估计参数。
+区间估计：置信区间。
+假设检验：原假设、备择假设、p 值。
+方差分析：比较多个均值。
+回归分析：变量关系建模。
+相关分析：相关程度。
+
+7. 抽样与试验
+简单随机抽样：等概率。
+分层抽样：按层抽样。
+系统抽样：等间隔。
+整群抽样：群为单位。
+试验设计：安排试验。
+正交设计：多因素高效。
+
+8. 进阶统计
+贝叶斯统计：先验+数据=后验。
+非参数统计：不假定分布。
+稳健统计：抗异常值。
+时间序列：趋势、季节。
+多元统计：多变量。
+生存分析：时间到事件。
+统计计算：算法。
+机器学习统计基础：学习理论。
+精算学：保险数学。
+金融数学：衍生品定价。
+风险理论：风险度量。
+
+============================================================
+结束
+============================================================  `,
+  "数学公式定理大全": `数学公式定理大全（初高中大学常见核心）
+按：数与代数、图形与几何、概率与统计 三大类整理
+
+说明：以下为初高中及大学常见核心公式与定理，已尽量覆盖主干；高阶内容只列常用结论。
+
+============================================================
+一、数与代数
+============================================================
+
+1. 基本运算与代数式
+加法交换律：a+b=b+a
+加法结合律：(a+b)+c=a+(b+c)
+乘法交换律：ab=ba
+乘法结合律：(ab)c=a(bc)
+乘法分配律：a(b+c)=ab+ac
+幂运算：a^m·a^n=a^(m+n)
+幂运算：(a^m)^n=a^(mn)
+幂运算：(ab)^n=a^n b^n
+a^0=1（a≠0）
+a^(-n)=1/a^n（a≠0）
+a^(m/n)=ⁿ√(a^m)（a>0）
+平方差：(a+b)(a-b)=a²-b²
+完全平方：(a±b)²=a²±2ab+b²
+完全立方：(a±b)³=a³±3a²b+3ab²±b³
+立方和：a³+b³=(a+b)(a²-ab+b²)
+立方差：a³-b³=(a-b)(a²+ab+b²)
+三项完全平方：a²+b²+c²+2ab+2bc+2ca=(a+b+c)²
+二项式定理：(a+b)^n=Σ C(n,k)a^(n-k)b^k
+因式分解：提公因式、公式法、十字相乘、分组分解、求根法
+分式运算：a/b ± c/d=(ad±bc)/(bd)
+分式乘除：a/b·c/d=ac/bd；a/b÷c/d=ad/bc
+根式：√(ab)=√a√b（a,b≥0）
+根式：√(a/b)=√a/√b（a≥0,b>0）
+分母有理化：1/(√a+√b)=(√a-√b)/(a-b)
+韦达定理：x₁+x₂=-b/a，x₁x₂=c/a
+
+2. 方程与不等式
+一元一次方程：ax+b=0，x=-b/a（a≠0）
+一元二次方程：ax²+bx+c=0
+判别式：Δ=b²-4ac
+求根公式：x=(-b±√Δ)/(2a)
+Δ>0 两不等实根；Δ=0 两相等实根；Δ<0 无实根
+二元一次方程组：代入消元、加减消元
+分式方程：去分母求解，必须验根
+根式方程：平方去根，必须验根
+高次方程：因式分解、试根、降次
+不等式性质：a>b ⇒ a+c>b+c
+不等式性质：a>b,c>0 ⇒ ac>bc
+不等式性质：a>b,c<0 ⇒ ac<bc
+一元二次不等式：结合二次函数图像与根分布
+绝对值不等式：|x|<a ⇔ -a<x<a（a>0）
+绝对值不等式：|x|>a ⇔ x<-a 或 x>a（a>0）
+三角不等式：|a+b|≤|a|+|b|
+均值不等式：a²+b²≥2ab
+均值不等式：(a+b)/2≥√ab（a,b≥0）
+均值不等式：a+b+c≥3³√abc（a,b,c≥0）
+柯西不等式：(Σaᵢbᵢ)²≤(Σaᵢ²)(Σbᵢ²)
+排序不等式：同序和≥乱序和≥逆序和
+琴生不等式：凸函数 f(Σλᵢxᵢ)≤Σλᵢf(xᵢ)
+线性规划：目标函数最值通常在可行域顶点取得
+零点存在定理：f(x) 连续，f(a)f(b)<0，则 (a,b) 内有零点
+
+3. 函数与三角
+函数定义：y=f(x)，定义域、值域、对应法则
+单调性：f'(x)≥0 增；f'(x)≤0 减
+奇偶性：偶 f(-x)=f(x)；奇 f(-x)=-f(x)
+周期性：f(x+T)=f(x)
+反函数：y=f(x) ⇔ x=f⁻¹(y)，图像关于 y=x 对称
+一次函数：y=kx+b
+二次函数：y=ax²+bx+c
+二次函数顶点：(-b/2a,(4ac-b²)/4a)
+反比例函数：y=k/x
+指数函数：y=a^x（a>0,a≠1）
+对数函数：y=log_a x（a>0,a≠1）
+指数对数互化：a^b=N ⇔ b=log_a N
+对数运算：log_a(MN)=log_a M+log_a N
+对数运算：log_a(M/N)=log_a M-log_a N
+对数运算：log_a(M^n)=n log_a M
+换底公式：log_a b=ln b/ln a
+对数恒等式：a^(log_a b)=b
+同角三角：sin²x+cos²x=1
+同角三角：tan x=sin x/cos x
+同角三角：1+tan²x=sec²x
+同角三角：1+cot²x=csc²x
+诱导公式：奇变偶不变，符号看象限
+和差公式：sin(α±β)=sinαcosβ±cosαsinβ
+和差公式：cos(α±β)=cosαcosβ∓sinαsinβ
+和差公式：tan(α±β)=(tanα±tanβ)/(1∓tanαtanβ)
+倍角公式：sin2α=2sinαcosα
+倍角公式：cos2α=cos²α-sin²α=1-2sin²α=2cos²α-1
+倍角公式：tan2α=2tanα/(1-tan²α)
+半角公式：sin²(α/2)=(1-cosα)/2
+半角公式：cos²(α/2)=(1+cosα)/2
+半角公式：tan(α/2)=sinα/(1+cosα)=(1-cosα)/sinα
+积化和差：sinαcosβ=½[sin(α+β)+sin(α-β)]
+积化和差：cosαcosβ=½[cos(α+β)+cos(α-β)]
+积化和差：sinαsinβ=½[cos(α-β)-cos(α+β)]
+和差化积：sinA+sinB=2sin((A+B)/2)cos((A-B)/2)
+和差化积：cosA+cosB=2cos((A+B)/2)cos((A-B)/2)
+辅助角公式：a sin x+b cos x=√(a²+b²)sin(x+φ)
+正弦定理：a/sinA=b/sinB=c/sinC=2R
+余弦定理：a²=b²+c²-2bc cosA
+三角形面积：S=½ab sinC
+三角形面积：S=abc/(4R)
+三角形面积：S=rs（r 内切圆半径，s 半周长）
+海伦公式：S=√[s(s-a)(s-b)(s-c)]
+反三角：arcsin x+arccos x=π/2
+反三角：arctan x+arccot x=π/2
+
+4. 数列
+等差数列通项：aₙ=a₁+(n-1)d
+等差数列求和：Sₙ=n(a₁+aₙ)/2=na₁+n(n-1)d/2
+等比数列通项：aₙ=a₁q^(n-1)
+等比数列求和：Sₙ=a₁(1-qⁿ)/(1-q)（q≠1）
+等比数列求和：Sₙ=na₁（q=1）
+裂项：1/[n(n+1)]=1/n-1/(n+1)
+裂项：1/[(2n-1)(2n+1)]=½[1/(2n-1)-1/(2n+1)]
+错位相减：用于等差×等比型求和
+倒序相加：用于对称型求和
+分组求和：分组后分别求和
+数学归纳法：验证 n=1；假设 n=k；证明 n=k+1
+
+5. 排列组合、复数
+排列：A(n,m)=n!/(n-m)!
+组合：C(n,m)=n!/[m!(n-m)!]
+组合性质：C(n,m)=C(n,n-m)
+组合性质：C(n,m)=C(n-1,m-1)+C(n-1,m)
+二项式定理：(a+b)^n=Σ C(n,k)a^(n-k)b^k
+容斥原理：|A∪B|=|A|+|B|-|A∩B|
+容斥原理：|A∪B∪C|=|A|+|B|+|C|-|A∩B|-|A∩C|-|B∩C|+|A∩B∩C|
+复数：i²=-1
+复数：z=a+bi，z̄=a-bi
+复数模：|z|=√(a²+b²)
+复数：|z|²=z z̄
+复数三角形式：z=r(cosθ+i sinθ)
+棣莫弗定理：[r(cosθ+i sinθ)]^n=r^n(cos nθ+i sin nθ)
+欧拉公式：e^(iθ)=cosθ+i sinθ
+
+6. 极限与微积分
+极限四则：lim(f±g)=limf±limg
+极限四则：lim(fg)=limf·limg
+极限四则：lim(f/g)=limf/limg（分母极限≠0）
+两个重要极限：lim(x→0) sinx/x=1
+两个重要极限：lim(x→∞)(1+1/x)^x=e
+等价无穷小：sinx~x，tanx~x，arcsinx~x，arctanx~x
+等价无穷小：1-cosx~x²/2
+等价无穷小：ln(1+x)~x，e^x-1~x
+等价无穷小：(1+x)^α-1~αx
+洛必达法则：0/0 或 ∞/∞ 型，lim f/g=lim f'/g'
+泰勒公式：f(x)=Σ f^(n)(a)(x-a)^n/n!+R_n
+麦克劳林：e^x=1+x+x²/2!+x³/3!+…
+麦克劳林：sinx=x-x³/3!+x⁵/5!-…
+麦克劳林：cosx=1-x²/2!+x⁴/4!-…
+麦克劳林：ln(1+x)=x-x²/2+x³/3-…
+麦克劳林：(1+x)^α=1+αx+α(α-1)x²/2!+…
+导数定义：f'(x)=lim(h→0)[f(x+h)-f(x)]/h
+导数： (x^n)'=n x^(n-1)
+导数： (sinx)'=cosx
+导数： (cosx)'=-sinx
+导数： (tanx)'=sec²x
+导数： (cotx)'=-csc²x
+导数： (secx)'=secx tanx
+导数： (cscx)'=-cscx cotx
+导数： (e^x)'=e^x
+导数： (a^x)'=a^x ln a
+导数： (lnx)'=1/x
+导数： (log_a x)'=1/(x ln a)
+导数： (arcsinx)'=1/√(1-x²)
+导数： (arccosx)'=-1/√(1-x²)
+导数： (arctanx)'=1/(1+x²)
+导数： (arccotx)'=-1/(1+x²)
+四则求导：(u±v)'=u'±v'
+四则求导：(uv)'=u'v+uv'
+四则求导：(u/v)'=(u'v-uv')/v²
+链式法则：dy/dx=dy/du·du/dx
+隐函数求导：F(x,y)=0 ⇒ dy/dx=-F_x/F_y
+参数方程求导：dy/dx=(dy/dt)/(dx/dt)
+罗尔定理：f(a)=f(b)，连续可导，则存在 ξ 使 f'(ξ)=0
+拉格朗日中值定理：f(b)-f(a)=f'(ξ)(b-a)
+柯西中值定理：[f(b)-f(a)]/[g(b)-g(a)]=f'(ξ)/g'(ξ)
+泰勒中值定理：f(x)=Σ f^(k)(a)(x-a)^k/k!+f^(n+1)(ξ)(x-a)^(n+1)/(n+1)!
+不定积分：∫x^n dx=x^(n+1)/(n+1)+C（n≠-1）
+不定积分：∫1/x dx=ln|x|+C
+不定积分：∫e^x dx=e^x+C
+不定积分：∫a^x dx=a^x/ln a+C
+不定积分：∫sinx dx=-cosx+C
+不定积分：∫cosx dx=sinx+C
+不定积分：∫sec²x dx=tanx+C
+不定积分：∫csc²x dx=-cotx+C
+不定积分：∫1/(1+x²) dx=arctanx+C
+不定积分：∫1/√(1-x²) dx=arcsinx+C
+分部积分：∫u dv=uv-∫v du
+牛顿-莱布尼茨公式：∫_a^b f(x)dx=F(b)-F(a)
+定积分性质：∫_a^b f= -∫_b^a f
+定积分性质：∫_a^b (αf+βg)=α∫_a^b f+β∫_a^b g
+变上限积分：(∫_a^x f(t)dt)'=f(x)
+反常积分：∫_a^∞ f=lim(b→∞)∫_a^b f
+偏导数：∂f/∂x=lim(Δx→0)[f(x+Δx,y)-f(x,y)]/Δx
+全微分：dz=∂z/∂x dx+∂z/∂y dy
+多元链式：dz/dt=∂z/∂x·dx/dt+∂z/∂y·dy/dt
+隐函数：F(x,y,z)=0 ⇒ ∂z/∂x=-F_x/F_z
+极值必要条件：f_x=0，f_y=0
+极值充分条件：Hessian 矩阵正定极小，负定极大
+拉格朗日乘数：∇f=λ∇g
+二重积分：∬_D f(x,y)dA
+三重积分：∭_Ω f(x,y,z)dV
+曲线积分：∫_L P dx+Q dy
+曲面积分：∬_S F·dS
+格林公式：∮_L P dx+Q dy=∬_D (∂Q/∂x-∂P/∂y)dA
+高斯公式：∯_S F·dS=∭_Ω ∇·F dV
+斯托克斯公式：∮_L F·dr=∬_S (∇×F)·dS
+级数收敛：Σaₙ 收敛 ⇒ lim aₙ=0
+p 级数：Σ1/n^p，p>1 收敛，p≤1 发散
+比值判别：lim|a_{n+1}/a_n|<1 收敛
+根值判别：lim|a_n|^(1/n)<1 收敛
+幂级数收敛半径：R=1/limsup|a_n|^(1/n)
+傅里叶级数：f(x)~a₀/2+Σ(aₙcos nx+bₙsin nx)
+
+7. 线性代数
+行列式：|AB|=|A||B|
+行列式：|A^T|=|A|
+行列式：|A^(-1)|=1/|A|
+逆矩阵：A^(-1)=adj(A)/|A|（|A|≠0）
+矩阵乘法：(AB)C=A(BC)
+矩阵转置：(AB)^T=B^T A^T
+矩阵逆：(AB)^(-1)=B^(-1)A^(-1)
+秩：r(AB)≤min(r(A),r(B))
+线性方程组：Ax=b
+齐次方程：Ax=0 有非零解 ⇔ r(A)<n
+非齐次：有解 ⇔ r(A)=r(A,b)
+特征值：Av=λv
+特征方程：|A-λI|=0
+相似对角化：A=PΛP^(-1)
+二次型：x^T A x
+正定：所有顺序主子式>0
+线性空间：基、维数、坐标
+线性变换：T(α+β)=Tα+Tβ，T(kα)=kTα
+若尔当标准型：J=P^(-1)AP
+
+8. 抽象代数、数论、逻辑
+群：封闭、结合、单位元、逆元
+环：加法群+乘法分配律
+域：交换环，非零元可逆
+拉格朗日定理：|G|=|H|·[G:H]
+群同态基本定理：G/kerφ≅Imφ
+同余：a≡b mod m
+欧拉定理：a^(φ(n))≡1 mod n（gcd(a,n)=1）
+费马小定理：a^(p-1)≡1 mod p（p 质数，p∤a）
+中国剩余定理：同余方程组有解条件与解法
+德摩根律：(A∪B)^c=A^c∩B^c
+德摩根律：(A∩B)^c=A^c∪B^c
+一阶线性微分方程：y'+P(x)y=Q(x)
+通解：y=e^(-∫P dx)(∫Q e^(∫P dx)dx+C)
+二阶常系数齐次：y''+py'+qy=0
+特征方程：r²+pr+q=0
+可分离变量：dy/dx=f(x)g(y) ⇒ dy/g(y)=f(x)dx
+
+============================================================
+二、图形与几何
+============================================================
+
+1. 平面几何
+勾股定理：a²+b²=c²
+勾股逆定理：a²+b²=c² ⇒ 直角三角形
+射影定理：a²=pc，b²=qc，h²=pq
+相似三角形：对应边成比例，对应角相等
+全等三角形：SSS、SAS、ASA、AAS、HL
+中位线定理：三角形中位线平行第三边且等于一半
+梯形中位线：m=(a+b)/2
+角平分线定理：BD/DC=AB/AC
+中线长公式：m_a=½√(2b²+2c²-a²)
+角平分线长：l_a=√[bc(1-a²/(b+c)²)]
+三角形面积：S=½底×高
+海伦公式：S=√[s(s-a)(s-b)(s-c)]
+内切圆半径：r=S/s
+外接圆半径：R=abc/(4S)
+圆幂定理：PA·PB=PC·PD
+切割线定理：PT²=PA·PB
+相交弦定理：PA·PB=PC·PD
+圆内接四边形：对角互补
+圆外切四边形：对边和相等
+圆周角定理：圆周角等于同弧圆心角的一半
+切线定理：切线垂直于过切点的半径
+托勒密定理：AC·BD=AB·CD+AD·BC
+梅涅劳斯定理：(AF/FB)(BD/DC)(CE/EA)=1
+塞瓦定理：(AF/FB)(BD/DC)(CE/EA)=1
+欧拉线：重心、垂心、外心共线
+九点圆：三角形三边中点、三垂足、三顶点到垂心中点共圆
+黄金分割：φ=(1+√5)/2
+
+2. 三角与解三角形
+正弦定理：a/sinA=b/sinB=c/sinC=2R
+余弦定理：a²=b²+c²-2bc cosA
+面积公式：S=½ab sinC
+面积公式：S=abc/(4R)
+面积公式：S=rs
+海伦公式：S=√[s(s-a)(s-b)(s-c)]
+三角函数和差、倍角、半角、积化和差、和差化积见“数与代数”
+辅助角：a sinx+b cosx=√(a²+b²)sin(x+φ)
+
+3. 坐标与解析几何
+两点距离：|AB|=√[(x₂-x₁)²+(y₂-y₁)²]
+中点：((x₁+x₂)/2,(y₁+y₂)/2)
+斜率：k=(y₂-y₁)/(x₂-x₁)
+点斜式：y-y₁=k(x-x₁)
+斜截式：y=kx+b
+一般式：Ax+By+C=0
+点到直线距离：d=|Ax₀+By₀+C|/√(A²+B²)
+两直线平行：A₁/B₁=A₂/B₂
+两直线垂直：A₁A₂+B₁B₂=0
+圆标准方程：(x-a)²+(y-b)²=r²
+圆一般方程：x²+y²+Dx+Ey+F=0
+椭圆标准方程：x²/a²+y²/b²=1
+椭圆：c²=a²-b²，e=c/a<1
+椭圆准线：x=±a²/c
+双曲线标准方程：x²/a²-y²/b²=1
+双曲线：c²=a²+b²，e=c/a>1
+双曲线渐近线：y=±(b/a)x
+双曲线准线：x=±a²/c
+抛物线：y²=2px
+抛物线焦点：(p/2,0)
+抛物线准线：x=-p/2
+抛物线：y²=-2px，x²=2py，x²=-2py 类推
+参数方程：x=x(t)，y=y(t)
+极坐标：x=ρcosθ，y=ρsinθ
+圆锥曲线统一定义：到焦点与准线距离比为 e
+坐标变换：平移 x'=x-h，y'=y-k
+坐标变换：旋转 x=x'cosθ-y'sinθ，y=x'sinθ+y'cosθ
+
+4. 向量
+向量加减：a±b=(x₁±x₂,y₁±y₂)
+数乘：ka=(kx,ky)
+数量积：a·b=|a||b|cosθ
+坐标数量积：a·b=x₁x₂+y₁y₂+z₁z₂
+向量模：|a|=√(x²+y²+z²)
+夹角：cosθ=a·b/(|a||b|)
+平行：a∥b ⇔ a=λb ⇔ x₁y₂-x₂y₁=0
+垂直：a⊥b ⇔ a·b=0
+投影：proj_b a=(a·b/|b|²)b
+向量积：|a×b|=|a||b|sinθ
+向量积坐标：a×b=(y₁z₂-z₁y₂,z₁x₂-x₁z₂,x₁y₂-y₁x₂)
+混合积：a·(b×c)=det(a,b,c)
+平行四边形面积：S=|a×b|
+平行六面体体积：V=|a·(b×c)|
+
+5. 立体几何
+柱体体积：V=Sh
+锥体体积：V=Sh/3
+台体体积：V=h(S₁+√(S₁S₂)+S₂)/3
+球体积：V=4/3πR³
+球表面积：S=4πR²
+圆柱侧面积：S=2πrh
+圆柱全面积：S=2πr²+2πrh
+圆锥侧面积：S=πrl
+圆锥全面积：S=πr²+πrl
+圆台侧面积：S=π(r₁+r₂)l
+棱柱体积：V=Sh
+棱锥体积：V=Sh/3
+棱台体积：V=h(S₁+√(S₁S₂)+S₂)/3
+欧拉公式：V-E+F=2
+空间线面角：sinθ=|a·n|/(|a||n|)
+二面角：cosθ=|n₁·n₂|/(|n₁||n₂|)
+点面距：d=|Ax₀+By₀+Cz₀+D|/√(A²+B²+C²)
+
+6. 高等几何
+曲率：κ=|r'×r''|/|r'|³
+挠率：τ=(r'×r'')·r'''/|r'×r''|²
+Frenet 公式：T'=κN，N'=-κT+τB，B'=-τN
+高斯曲率：K=(LN-M²)/(EG-F²)
+测地线：曲面上短程线，满足测地曲率为 0
+高斯-博内：∫_S K dA+∫_∂S κ_g ds=2πχ(S)
+欧拉示性数：χ=V-E+F
+同胚：连续双射且逆连续
+基本群：π₁(X,x₀)
+覆盖空间：p: E→B 局部同胚
+
+============================================================
+三、概率与统计
+============================================================
+
+1. 概率基础
+古典概型：P(A)=m/n
+几何概型：P(A)=测度比
+概率加法：P(A∪B)=P(A)+P(B)-P(A∩B)
+互斥：P(A∪B)=P(A)+P(B)
+条件概率：P(A|B)=P(AB)/P(B)
+乘法公式：P(AB)=P(A|B)P(B)
+独立性：P(AB)=P(A)P(B)
+全概率公式：P(A)=ΣP(Bᵢ)P(A|Bᵢ)
+贝叶斯公式：P(Bᵢ|A)=P(Bᵢ)P(A|Bᵢ)/ΣP(Bⱼ)P(A|Bⱼ)
+
+2. 随机变量与分布
+分布函数：F(x)=P(X≤x)
+离散型：P(X=xᵢ)=pᵢ，Σpᵢ=1
+连续型：f(x)≥0，∫_{-∞}^{∞}f(x)dx=1
+0-1 分布：E=p，Var=p(1-p)
+二项分布：X~B(n,p)，P=C(n,k)p^k(1-p)^(n-k)
+二项分布：E=np，Var=np(1-p)
+泊松分布：X~P(λ)，P(X=k)=λ^k e^(-λ)/k!
+泊松分布：E=λ，Var=λ
+超几何分布：P=C(M,k)C(N-M,n-k)/C(N,n)
+均匀分布：X~U(a,b)，f=1/(b-a)
+均匀分布：E=(a+b)/2，Var=(b-a)²/12
+指数分布：f=λe^(-λx)，x≥0
+指数分布：E=1/λ，Var=1/λ²
+正态分布：X~N(μ,σ²)
+正态密度：f=1/(σ√(2π))e^(-(x-μ)²/(2σ²))
+标准正态：Z=(X-μ)/σ~N(0,1)
+正态分布：E=μ，Var=σ²
+卡方分布：χ²(n)
+t 分布：t(n)
+F 分布：F(n₁,n₂)
+
+3. 数字特征
+期望：E(X)=Σxᵢpᵢ 或 ∫xf(x)dx
+期望线性：E(aX+b)=aE(X)+b
+期望线性：E(X+Y)=E(X)+E(Y)
+方差：Var(X)=E[(X-E(X))²]=E(X²)-[E(X)]²
+方差性质：Var(aX+b)=a²Var(X)
+协方差：Cov(X,Y)=E[(X-EX)(Y-EY)]
+协方差：Cov(X,Y)=E(XY)-E(X)E(Y)
+相关系数：ρ=Cov(X,Y)/(σ_Xσ_Y)
+独立 ⇒ 不相关；不相关不一定独立
+二项分布方差推导：Var=np(1-p)
+
+4. 极限定理
+大数定律：样本均值依概率收敛于期望
+中心极限定理：独立同分布，n 大时 (X̄-μ)/(σ/√n) 近似 N(0,1)
+棣莫弗-拉普拉斯：二项分布近似正态
+
+5. 数理统计
+样本均值：x̄=(1/n)Σxᵢ
+样本方差：s²=1/(n-1)Σ(xᵢ-x̄)²
+样本标准差：s=√s²
+t 统计量：t=(x̄-μ)/(s/√n)
+χ² 统计量：χ²=Σ(O-E)²/E
+F 统计量：F=s₁²/s₂²
+点估计：矩估计、最大似然估计
+区间估计：x̄±z_{α/2}·σ/√n
+回归直线：y=a+bx
+回归系数：b=Σ(xᵢ-x̄)(yᵢ-ȳ)/Σ(xᵢ-x̄)²
+回归截距：a=ȳ-bx̄
+相关系数：r=Σ(xᵢ-x̄)(yᵢ-ȳ)/√[Σ(xᵢ-x̄)²Σ(yᵢ-ȳ)²]
+
+6. 随机过程
+马尔可夫性：P(X_{n+1}=j|X_n=i,X_{n-1},…)=P(X_{n+1}=j|X_n=i)
+转移概率：p_{ij}=P(X_{n+1}=j|X_n=i)
+泊松过程：N(t)~P(λt)
+布朗运动：B(t)~N(0,t)，独立增量
+鞅：E(X_{n+1}|F_n)=X_n
+平稳过程：均值、协方差函数不随时间平移变化
+
+============================================================
+结束
+============================================================  `
+};
+
+/* ============================================================
+   解析：按 ===== 分割章节
+   ============================================================ */
+function detectSectionGroup(line) {
+  const t = line.trim();
+  if (/^(?:数与代数|图形与几何|概率与统计)$/.test(t)) {
+    if (t === '数与代数') return '数与代数';
+    if (t === '图形与几何') return '图形与几何';
+    if (t === '概率与统计') return '概率与统计';
+  }
+  const m = t.match(/^(?:一|二|三|四|五|六|七|八|九|十|十一|十二|[1-9]\d*)[、. ]*(数与代数|图形与几何|概率与统计)$/);
+  if (!m) return null;
+  return m[1];
+}
+
+function getSectionTitle(line) {
+  const t = line.trim();
+  if (/^(一|二|三|四|五|六|七|八|九|十|十一|十二)、/.test(t) ||
+      /^\d+\.\s*\S/.test(t) && t.length < 40) {
+    return t;
+  }
+  return null;
+}
+
+function parseSections(text) {
+  const sections = [];
+  const lines = text.split('\n');
+  let current = null;
+  let currentGroup = '其他';
+
+  for (let line of lines) {
+    const trimmed = line.trim();
+
+    if (/^={10,}/.test(trimmed)) {
+      if (current && current.content.trim()) sections.push(current);
+      current = null;
+      continue;
+    }
+
+    const group = detectSectionGroup(trimmed);
+    if (group) {
+      currentGroup = group;
+      continue;
+    }
+
+    const title = getSectionTitle(trimmed);
+    if (title) {
+      if (current && current.content.trim()) {
+        sections.push(current);
+      }
+      current = { title, content: '', group: currentGroup };
+      continue;
+    }
+
+    if (current) current.content += line + '\n';
+  }
+
+  if (current && current.content.trim()) sections.push(current);
+
+  const seen = new Set();
+  return sections.filter(sec => {
+    const key = `${sec.group}|${sec.title}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+/* ============================================================
+   构建左侧目录
+   ============================================================ */
+const nav = document.getElementById('nav');
+const content = document.getElementById('content');
+const allSections = [];
+const groupOrder = ['数与代数', '图形与几何', '概率与统计', '其他'];
+nav.innerHTML = `
+  <div class="nav-intro">课程目录 · COURSE OUTLINE</div>
+  <div class="nav-legend">
+    <span><i class="chapter-flag focus" aria-hidden="true">★</i> 重点</span>
+    <span><i class="chapter-flag challenge" aria-hidden="true">◆</i> 难点</span>
+  </div>`;
+
+function getChapterMarkers(sec) {
+  const title = sec.title;
+  const focus = /数系|基本运算|方程|函数|三角|数列|排列组合|概率|随机变量|数字特征|数理统计|平面几何|解析几何|立体几何|向量/.test(title);
+  const challenge = /微积分|线性代数|抽象代数|高等几何|解析几何|随机变量|数字特征|立体几何|向量|三角/.test(title);
+  return { focus, challenge };
+}
+
+function createMarker(className, symbol, label) {
+  const marker = document.createElement('span');
+  marker.className = `chapter-flag ${className}`;
+  marker.textContent = symbol;
+  marker.title = label;
+  marker.setAttribute('aria-label', label);
+  return marker;
+}
+
+function buildSectionNode(sec, record) {
+  const div = document.createElement('button');
+  div.type = 'button';
+  div.className = 'section';
+  div.dataset.book = record.book;
+  div.dataset.index = record.index;
+  div.setAttribute('aria-label', `${sec.title}${record.markers.focus ? '，重点' : ''}${record.markers.challenge ? '，难点' : ''}`);
+
+  const badge = document.createElement('span');
+  badge.className = 'section-badge';
+  badge.textContent = String(record.number);
+
+  const text = document.createElement('span');
+  text.className = 'section-text';
+  text.textContent = sec.title;
+
+  const flags = document.createElement('span');
+  flags.className = 'chapter-flags';
+  if (record.markers.focus) flags.appendChild(createMarker('focus', '★', '重点'));
+  if (record.markers.challenge) flags.appendChild(createMarker('challenge', '◆', '难点'));
+
+  div.append(badge, text, flags);
+  div.addEventListener('click', () => showSection(record.book, record.index, div));
+  return div;
+}
+
+for (const bookName in DATA) {
+  let bookSectionNumber = 0;
+  const bookNode = document.createElement('div');
+  bookNode.className = 'book-node';
+
+  const bookTitle = document.createElement('button');
+  bookTitle.type = 'button';
+  bookTitle.className = 'book-title';
+  bookTitle.setAttribute('aria-expanded', 'true');
+  bookTitle.innerHTML = `<span aria-hidden="true">📕</span><span>${escapeHtml(bookName)}</span><span class="book-toggle" aria-hidden="true">▾</span>`;
+  bookTitle.addEventListener('click', () => {
+    const collapsed = bookNode.classList.toggle('collapsed');
+    bookTitle.setAttribute('aria-expanded', String(!collapsed));
+  });
+  bookNode.appendChild(bookTitle);
+
+  const bookBody = document.createElement('div');
+  bookBody.className = 'book-body';
+
+  const sections = parseSections(DATA[bookName]);
+  const grouped = new Map();
+
+  sections.forEach(sec => {
+    const g = groupOrder.includes(sec.group) ? sec.group : '其他';
+    if (!grouped.has(g)) grouped.set(g, []);
+    grouped.get(g).push(sec);
+  });
+
+  const orderedGroups = [...groupOrder].filter(g => grouped.has(g));
+  for (const group of [...new Set([...orderedGroups, ...grouped.keys()])]) {
+    const groupWrap = document.createElement('div');
+    groupWrap.className = 'group';
+
+    const title = document.createElement('button');
+    title.type = 'button';
+    title.className = 'group-title';
+    title.setAttribute('aria-expanded', 'true');
+    title.innerHTML = `<span class="group-label"><i class="group-dot" aria-hidden="true"></i>${escapeHtml(group)}</span><span class="group-toggle" aria-hidden="true">▾</span>`;
+    title.addEventListener('click', () => {
+      const collapsed = groupWrap.classList.toggle('collapsed');
+      title.setAttribute('aria-expanded', String(!collapsed));
+    });
+    groupWrap.appendChild(title);
+
+    const body = document.createElement('div');
+    body.className = 'group-body';
+
+    const groupSections = grouped.get(group) || [];
+    groupSections.forEach((sec) => {
+      const record = {
+        book: bookName,
+        group,
+        index: allSections.length,
+        number: ++bookSectionNumber,
+        title: sec.title,
+        content: sec.content,
+        markers: getChapterMarkers(sec)
+      };
+      allSections.push(record);
+      body.appendChild(buildSectionNode(sec, record));
+    });
+
+    groupWrap.appendChild(body);
+    bookBody.appendChild(groupWrap);
+  }
+  bookNode.appendChild(bookBody);
+  nav.appendChild(bookNode);
+}
+
+/* ============================================================
+   显示章节
+   ============================================================ */
+function showSection(bookName, idx, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  if (el) el.classList.add('active');
+
+  const sec = allSections.find(s => s.book === bookName && s.index === idx);
+  if (!sec) return;
+  const bookSections = allSections.filter(s => s.book === bookName);
+  const position = bookSections.findIndex(s => s.index === idx);
+  const previous = position > 0 ? bookSections[position - 1] : null;
+  const next = position < bookSections.length - 1 ? bookSections[position + 1] : null;
+  const markers = [
+    sec.markers.focus ? '<span class="lesson-chip focus-chip">★ 重点</span>' : '',
+    sec.markers.challenge ? '<span class="lesson-chip challenge-chip">◆ 难点</span>' : ''
+  ].join('');
+  content.innerHTML = `
+    <article class="lesson-shell">
+      <div class="lesson-topline">
+        <span>${escapeHtml(sec.book)}</span><span aria-hidden="true">›</span>
+        <span>${escapeHtml(sec.group)}</span><span aria-hidden="true">›</span>
+        <span class="crumb-current">第 ${sec.number} 章</span>
+      </div>
+      <section class="lesson-hero">
+        <div class="lesson-kicker">第 ${sec.number} 章 · ${escapeHtml(sec.group)}</div>
+        <h2 class="lesson-title">${escapeHtml(sec.title)}</h2>
+        <div class="lesson-meta">
+          <span class="lesson-chip">${escapeHtml(sec.book)}</span>
+          ${markers}
+        </div>
+      </section>
+      <section class="lesson-content-card">
+        <pre>${escapeHtml(sec.content)}</pre>
+      </section>
+      <div class="lesson-navigation">
+        <button type="button" data-lesson-step="-1" ${previous ? '' : 'disabled'}>${previous ? `← 上一节：${escapeHtml(previous.title)}` : '已是本册第一节'}</button>
+        <button type="button" data-lesson-step="1" ${next ? '' : 'disabled'}>${next ? `下一节：${escapeHtml(next.title)} →` : '已是本册最后一节'}</button>
+      </div>
+    </article>`;
+  content.querySelectorAll('[data-lesson-step]').forEach(button => {
+    button.addEventListener('click', () => {
+      const target = bookSections[position + Number(button.dataset.lessonStep)];
+      if (!target) return;
+      const targetNode = Array.from(document.querySelectorAll('.section'))
+        .find(node => Number(node.dataset.index) === target.index);
+      showSection(target.book, target.index, targetNode);
+    });
+  });
+  content.scrollTop = 0;
+}
+
+const themeToggle = document.getElementById('themeToggle');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.body.dataset.theme = prefersDark ? 'dark' : 'light';
+
+themeToggle.addEventListener('click', () => {
+  const isDark = document.body.dataset.theme === 'dark';
+  document.body.dataset.theme = isDark ? 'light' : 'dark';
+  themeToggle.textContent = isDark ? '深色模式' : '浅色模式';
+});
+
+themeToggle.textContent = document.body.dataset.theme === 'dark' ? '浅色模式' : '深色模式';
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* ============================================================
+   搜索
+   ============================================================ */
+const searchInput = document.getElementById('search');
+let searchTimer = null;
+
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(doSearch, 200);
+});
+
+function doSearch() {
+  const kw = searchInput.value.trim();
+  if (!kw) {
+    content.innerHTML = `
+      <div class="welcome">
+        <div class="welcome-label">MATH LEARNING SPACE</div>
+        <h2>欢迎来到数学学习空间</h2>
+        <p>从左侧课程目录选择章节，循序学习数学知识与常用公式。</p>
+        <p>也可以使用顶部搜索框，快速定位定理、概念和公式。</p>
+        <div class="welcome-stats">
+          <span class="welcome-stat">📚 两套学习资料</span>
+          <span class="welcome-stat">🧭 三大学科模块</span>
+          <span class="welcome-stat">🔎 章节与公式可搜索</span>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const lowerKw = kw.toLowerCase();
+  const results = [];
+
+  for (const sec of allSections) {
+    const lines = sec.content.split('\n');
+    const matched = [];
+    lines.forEach(line => {
+      if (line.toLowerCase().includes(lowerKw)) {
+        matched.push(line);
+      }
+    });
+    if (matched.length > 0 || sec.title.toLowerCase().includes(lowerKw)) {
+      results.push({ sec, matched });
+    }
+  }
+
+  if (results.length === 0) {
+    content.innerHTML = `<h2>搜索：${escapeHtml(kw)}</h2><pre>未找到相关内容。</pre>`;
+    return;
+  }
+
+  let html = `<h2>搜索：${escapeHtml(kw)} （共 ${results.length} 个章节）</h2>`;
+  results.forEach(r => {
+    html += `<h3 style="color:#4a69bd;margin:16px 0 8px;">【${escapeHtml(r.sec.book)}】${escapeHtml(r.sec.title)}</h3>`;
+    html += '<pre>';
+    if (r.matched.length > 0) {
+      r.matched.slice(0, 30).forEach(line => {
+        html += highlight(line, kw) + '\n';
+      });
+      if (r.matched.length > 30) html += `…（还有 ${r.matched.length - 30} 行匹配）\n`;
+    } else {
+      html += '（标题匹配）\n';
+    }
+    html += '</pre>';
+  });
+  content.innerHTML = html;
+  content.scrollTop = 0;
+}
+
+function highlight(text, kw) {
+  const escaped = escapeHtml(text);
+  const re = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  return escaped.replace(re, '<mark>$1</mark>');
+}
+</script>
+</body>
+</html>
