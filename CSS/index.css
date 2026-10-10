@@ -336,6 +336,86 @@ main pre {
   line-height: 1.95;
   color: var(--text);
 }
+.lesson-content {
+  font-family: "Consolas", "微软雅黑", monospace;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text);
+}
+.lesson-content .content-line {
+  padding-left: 1.5em;
+  overflow-wrap: anywhere;
+}
+.lesson-content .content-heading {
+  padding-left: 0;
+  margin-top: 0.7em;
+  color: var(--primary-strong);
+  font-weight: 700;
+}
+.lesson-content .content-heading:first-child { margin-top: 0; }
+.lesson-content .content-spacer { height: 0.65em; }
+.math-sup,
+.math-sub {
+  color: var(--primary);
+  font-size: 0.76em;
+  font-weight: 600;
+  line-height: 0;
+}
+.math-sup { vertical-align: super; }
+.math-sub { vertical-align: sub; }
+.math-frac,
+.math-radical,
+.math-sup,
+.math-sub {
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+}
+.math-frac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  vertical-align: middle;
+  margin: 0 0.12em 0.08em;
+  font-size: 0.82em;
+  line-height: 1.05;
+  text-align: center;
+}
+.math-numerator,
+.math-denominator {
+  display: block;
+  padding: 0 0.2em;
+  white-space: nowrap;
+}
+.math-denominator {
+  border-top: 1px solid currentColor;
+}
+.math-radical {
+  display: inline-flex;
+  align-items: flex-start;
+  vertical-align: -0.08em;
+  margin: 0 0.03em;
+}
+.math-radical::before {
+  content: "√";
+  padding-right: 0.03em;
+  font-size: 1.15em;
+  line-height: 1;
+}
+.math-radicand {
+  display: inline-block;
+  border-top: 1px solid currentColor;
+  padding: 0 0.08em 0 0.04em;
+  line-height: 1.15;
+}
+.math-operator {
+  color: var(--primary-strong);
+  font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+  font-weight: 600;
+}
+.math-search-match {
+  background: #ffe066;
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px #ffe066;
+}
 .lesson-navigation {
   display: flex;
   justify-content: space-between;
